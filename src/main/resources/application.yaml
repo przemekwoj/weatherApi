@@ -1,0 +1,3 @@
+darkSky:
+  baseUrl: https://api.darksky.net/forecast
+  key: a4eb2b3f68e26e6979778ae1037e027f
