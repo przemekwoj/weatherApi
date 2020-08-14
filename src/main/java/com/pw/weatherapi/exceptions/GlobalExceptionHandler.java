@@ -1,5 +1,6 @@
 package com.pw.weatherapi.exceptions;
 
+import org.springframework.core.convert.ConversionFailedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -26,6 +27,13 @@ public class GlobalExceptionHandler {
     ResponseEntity<ApiError> handleLocationNotFound(LocationNotFound e) {
         ApiError apiError = new ApiError(Collections.singletonList(e.getLocalizedMessage()));
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(apiError);
+    }
+
+    @ExceptionHandler(ConversionFailedException.class)
+    ResponseEntity<ApiError> handleConversionFailedException(ConversionFailedException e) {
+        ApiError apiError = new ApiError(Collections.singletonList(e.getLocalizedMessage()));
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(apiError);
     }
 }

@@ -43,7 +43,6 @@ public class WeatherControllerIT {
 
     private final String key;
 
-
     private final String jastarniaSegment = createSegment(CityPosition.JASTARNIA);
     private final String wladyslawowoSegment = createSegment(CityPosition.WŁADYSŁAWOWO);
 

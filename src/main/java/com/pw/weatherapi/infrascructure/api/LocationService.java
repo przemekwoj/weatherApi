@@ -39,7 +39,11 @@ public class LocationService {
     }
 
     private boolean isGivenDate(Date date, WeatherDetails weatherDetails) {
-        return date.equals(new Date(weatherDetails.getTime() * 1000 - 86400000));
+        return date.equals(new Date(calculateDate(weatherDetails.getTime())));
+    }
+
+    long calculateDate(long time) {
+        return time * 1000 - 86400000;
     }
 
     private void addLocationDetails(List<WeatherDetails> weatherDetailsList, WeatherDetails weatherDetails, String locationName) {

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
 import java.util.Date;
 
 @RestController
@@ -23,10 +22,9 @@ public class WeatherController {
         this.locationService = locationService;
     }
 
-    @GetMapping(value = "{date}"
-            , produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "{date}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<WeatherDetails> getBestWeatherLocation(@PathVariable
-                                                                 @Valid @DateTimeFormat(pattern = "yyyy-MM-dd") Date date) throws LocationNotFound {
+                                                                 @DateTimeFormat(pattern = "yyyy-MM-dd") Date date) throws LocationNotFound {
         WeatherDetails bestLocation = locationService.getBestWeatherLocation(date);
 
         return ResponseEntity
