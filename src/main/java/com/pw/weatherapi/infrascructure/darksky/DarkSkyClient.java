@@ -25,8 +25,8 @@ public class DarkSkyClient implements DarkSkyService {
 
     @Override
     public DarkSkyLocationInformation getLocationInformation(CityPosition cityPosition) {
-        String url = buildURL(cityPosition).toString();
-        DarkSkyLocationInformation darkSkyLocationInformation = new RestTemplate().getForEntity(url, DarkSkyLocationInformation.class)
+        var url = buildURL(cityPosition).toString();
+        var darkSkyLocationInformation = new RestTemplate().getForEntity(url, DarkSkyLocationInformation.class)
                 .getBody();
         darkSkyLocationInformation.setLocation(cityPosition);
         return darkSkyLocationInformation;

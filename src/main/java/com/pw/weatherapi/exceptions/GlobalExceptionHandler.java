@@ -32,7 +32,10 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(ConversionFailedException.class)
     ResponseEntity<ApiError> handleConversionFailedException(ConversionFailedException e) {
-        ApiError apiError = new ApiError(Collections.singletonList(e.getLocalizedMessage()));
+        ApiError apiError = null;
+        if (e.getTargetType().getName().contains("LocalDate")) {
+            apiError = new ApiError(Collections.singletonList("Invalid path variable " + e.getValue() + " .Use valid date format yyyy-MM-dd"));
+        }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(apiError);
     }

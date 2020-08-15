@@ -10,6 +10,7 @@ import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,6 +24,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -37,6 +39,7 @@ public class WeatherControllerIT {
 
     private WireMockServer wireMockServer;
 
+    @Autowired
     private WebApplicationContext context;
 
     private MockMvc mockMvc;
@@ -86,7 +89,7 @@ public class WeatherControllerIT {
 
     private String jsonResponse(String file) throws IOException, ParseException {
         File resourcesDirectory = new File("src/test/resources/expectedResponse");
-        JSONObject jsonObject = (JSONObject) new JSONParser().parse(new FileReader(resourcesDirectory.getAbsolutePath() + "/" + file + "-response.json"));
+        JSONObject jsonObject = (JSONObject) new JSONParser().parse(new FileReader(resourcesDirectory.getAbsolutePath() + "/" + file + "-response.json", StandardCharsets.UTF_8));
         return jsonObject.toJSONString();
     }
 

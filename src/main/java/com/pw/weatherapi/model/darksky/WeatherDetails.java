@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class WeatherDetails implements Comparable<WeatherDetails> {
+public class WeatherDetails{
     private String locationName;
     private long time;
     private String summary;
@@ -47,10 +47,4 @@ public class WeatherDetails implements Comparable<WeatherDetails> {
     private float apparentTemperatureMax;
     private long apparentTemperatureMaxTime;
 
-    @Override
-    public int compareTo(WeatherDetails otherWeatherDetails) {
-        float calculation = windSpeed * 3 + (temperatureHigh + temperatureLow) / 2;
-        float otherCalculation = otherWeatherDetails.getWindSpeed() * 3 + (otherWeatherDetails.getTemperatureHigh() + otherWeatherDetails.getTemperatureLow()) / 2;
-        return (int) (otherCalculation - calculation);
-    }
 }
