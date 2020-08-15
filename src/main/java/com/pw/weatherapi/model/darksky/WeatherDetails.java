@@ -46,5 +46,4 @@ public class WeatherDetails{
     private long apparentTemperatureMinTime;
     private float apparentTemperatureMax;
     private long apparentTemperatureMaxTime;
-
 }

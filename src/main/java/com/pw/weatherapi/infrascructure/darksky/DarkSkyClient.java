@@ -38,5 +38,4 @@ public class DarkSkyClient implements DarkSkyService {
                 .pathSegment(cityPosition.getLatitude() + "," + cityPosition.getLongitude())
                 .build();
     }
-
 }

@@ -54,7 +54,7 @@ class WeatherDetailsHelperSpec extends Specification {
     }
 
     @Unroll
-    def "should if timestamp is a given date"() {
+    def "should validate if timestamp is a given date"() {
             WeatherDetails weatherDetails = new WeatherDetails();
             weatherDetails.setTime(timestamp)
         when:
@@ -62,7 +62,7 @@ class WeatherDetailsHelperSpec extends Specification {
         then:
             isGivenDate == expectedValue
         where:
-            givenDate                                         | timestamp   || expectedValue
+            givenDate                | timestamp   || expectedValue
             new LocalDate(2020,8,9)  | 1597010400  || true
             new LocalDate(2020,8,9)  | 1597096800  || false
             new LocalDate(2020,8,10) | 1597010400  || false

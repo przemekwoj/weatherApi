@@ -31,8 +31,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class WeatherControllerIT {
-    public WeatherControllerIT(@Value("${darkSky.key}") String key, WebApplicationContext context) {
+public class WeatherControllerTest {
+    public WeatherControllerTest(@Value("${darkSky.key}") String key, WebApplicationContext context) {
         this.key = key;
         this.context = context;
     }

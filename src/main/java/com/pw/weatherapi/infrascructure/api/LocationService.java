@@ -57,5 +57,4 @@ public class LocationService {
                 .sorted(WeatherDetailsHelper::weatherConditionComparator)
                 .findFirst().orElseThrow(() -> new LocationNotFound("Not found proper location"));
     }
-
 }

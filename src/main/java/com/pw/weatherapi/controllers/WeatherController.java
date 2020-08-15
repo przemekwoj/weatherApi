@@ -23,9 +23,7 @@ public class WeatherController {
     @GetMapping(value = "{date}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<WeatherDetails> getBestWeatherLocation(@PathVariable
                                                                  @DateTimeFormat(pattern = "yyyy-MM-dd")final LocalDate date) throws LocationNotFound {
-
         var bestLocation = locationService.getBestWeatherLocation(date);
-
         return ResponseEntity
                 .ok(bestLocation);
     }
